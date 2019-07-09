@@ -1,0 +1,18 @@
+sudo: false
+language: node_js
+node_js:
+  - lts/*
+jobs:
+  include:
+    - stage: npm release
+      node_js: node
+      script: echo "Deploying to npm ..."
+      deploy:
+        provider: npm
+        email:
+          secure: "sbJGMOanzl866+ZPitWfYVVrH1iN6obaRPwVSOnuHVjOjMNv8bHJeZu6aYWdX5zQCAHx+0Fwc64ExdQCN/aNCraN7ho+0RAJ3mVnGAe2KZRBDml+jUoDcHIeIHqtZr1sK/WXez/cZVAAFdZxcMcVd5cpisTKRBnZu+WspIYkb+C7yr7wMNN9PZWXdp6LsbyhqcQS+wDia2B9qy88GxYLsy713pkQtFHtcXSQylHuLDjGZMZvjkPz2pEXC9B7QKg64QFBYJg+NlvXumihmbP8MMWI2mVc+9lfxT6H1RNoZKJlBgcJVp3N+e750SbQEWt3RMRYfnUYjJ5bCjeAy8ujQKxjAm12V42+VHVivHeae33iYykKxidbiHtZK/zazIMlPcDoOeI56eOCmjW2x11Sm8igDWSdJylaLNhY8A2hcJho1Seq6gbHnPZbCtVxsTJaDrBBM4KlyAK5LITmMXLyE/eE162w3CDV2Wa38fWck8U22YxmxGZHZgod9KhIBC+giBn/ZYJ29TPeUZAfu72wpZIEWKDJ5rt3P4Lg8SndvtF58wEA71F9bV1aXx4Tii0E00WSMAxRTKym8yPF6OV7oy4nNGTgYAzvYuKo7Gw4WL4fPl7FVxAEszrIEjEydQN0CRnWsziilHUX9h+GL09L685j+wREC3pWRxJZCoCfDT4="
+        api_key: # 1498
+          secure: "eETe7FCbIDJ9gmU3YNQa08NrKSaO1AXvpBWvWzeivcKpbphbCwoHRFMfDwNm/ak+G+yfpS97wTZyh4/kBpPJE412BEpIPj3hHyEXY85YpxgPXwErUMsJ4q41L2gWDqmlYufrf4IfmINWFndwGNYHJ2FTYvJQnHD6ItQarki7LGEVj63dddFxHu80hm0MEwzcAwqlMjWYmPb5OsXqBnd2lLaVez0TfHg8cNiyAX6BVtfmOvR33COBukO6GDDeE0qpa+JWM5RpEi/UOkY2m2U85boljlhJsaW/sZOlx4qTVixpvlJ5daIsHvKTWoWyOSnoBSd8F7OsFnHAhYud+4foxuJqL0PP31wapauBqJbjOEaPqCYXGfL89lIcMfBReNLQBLAUyjmWq/xpfVVDlDh0yd8vpyE5dMFZIBpiTjG6mXCb30Jf+Z0DyrKWHx6Rlzes5lmpMctyDVGm3NnSIA07QVNOB3dQStAtgWDPqunqtj8j766vPPAjWJXUsf3zHzcnOMX/LT4TjiSFJu2TUZwhILKBaU7/h3+1Vu+tktrYRjT7TcHyrPB/2Yn7ZutbAnEviQc200kj4NjaJmfKjp2py6ibKW6SOt6lKu9VBhgeaJylXZHoPIGwxeOGCXH3u1lSUOorACgyMGjTIgESt1VNrhiY4PpBgGS+mc3HUGqjIvE="
+        on:
+          tags: true
+          node: node

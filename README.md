@@ -24,6 +24,12 @@ filter.has(Buffer.from('some txid')) // true
 
 ### `const bool = filter.has(buf)`
 
+### `const clone = filter.clone()`
+
+### `const byteLength = filter.encodingLength()`
+
+### `const encode = filter.encode([buf], [offset = 0])`
+
 ## Install
 
 ```sh

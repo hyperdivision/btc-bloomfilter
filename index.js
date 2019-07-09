@@ -2,6 +2,14 @@ const assert = require('nanoassert')
 const murmur = require('murmur3hash-wasm')
 const Bitfield = require('bitfield')
 const sodium = require('sodium-native')
+const VarInt = {
+  encode () {
+    this.encode.bytes = 0
+  },
+  encodingLength () {
+    return 0
+  }
+} // require('bitcoin-consensus-encoding/var-int')
 
 class BloomFilter {
   static tweak () {
@@ -44,6 +52,28 @@ class BloomFilter {
     clone._tweaks = new Uint32Array(this._tweaks)
 
     return clone
+  }
+
+  encodingLength () {
+    return VarInt.encodingLength(this.bitfield.buffer.byteLength) + this.bitfield.buffer.byteLength + 4 + 4 + 1
+  }
+
+  encode (buf, offset = 0) {
+    if (buf == null) buf = Buffer.alloc(this.encodingLength())
+    const view = new DataView(buf.buffer)
+    VarInt.encode(this.bitfield.buffer.byteLength, buf, offset)
+    offset += VarInt.encode.bytes
+    buf.set(this.bitfield.buffer, offset)
+    offset += this.bitfield.buffer.byteLength
+    view.setUint32(offset, this.n, true)
+    offset += 4
+    view.setUint32(offset, this.tweak, true)
+    offset += 4
+    view.setUint8(offset, 0, true)
+    offset += 1
+
+    this.encode.bytes = offset
+    return buf
   }
 }
 
