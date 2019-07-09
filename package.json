@@ -1,6 +1,6 @@
 {
   "name": "btc-bloomfilter",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "JavaScript / WASM implementation of BIP 37 - Connection Bloom filtering",
   "main": "index.js",
   "publishConfig": {
